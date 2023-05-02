@@ -54,16 +54,24 @@ print(f"Winner {winner}")
 print_Lines()
 
 
-
-   
-
-        
-
-
-# print(total_votes)
-# print(vote_totals)
-# #print(candidate_list)
-# print(vote_totals)
-
+with open('PyPoll_Results.txt', 'w') as f:
+    f.write("Election Results")
+    f.write('\n')
+    f.write("-------------------------")
+    f.write('\n')
+    f.write(f"Total Votes: {total_votes}")
+    f.write('\n')
+    f.write("-------------------------")
+    f.write('\n')
+    for i in candidate_list:
+        vote_percentage = vote_totals[i]/total_votes
+        percentage = f"{vote_percentage:.3%}"
+        f.write(f"{i}: {percentage} ({vote_totals[i]})")
+        f.write('\n')
+    f.write("-------------------------")
+    f.write('\n')
+    f.write(f"Winner {winner}")
+    f.write('\n')
+    f.write("-------------------------")
 
 
