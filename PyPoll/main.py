@@ -28,14 +28,30 @@ with open(voting_csv) as csvfile:
         
             key=str(newCandidate)
             vote_totals[key]= 0
-            print(vote_totals)
-            vote_totals.update({f"{newCandidate}: {int(1)}"})
-        # elif i[2] in candidate_list:
-        #     print("candidate is already in the list")
-        
+
+            vote_totals[newCandidate] = 1
+
+        elif i[2] in candidate_list:
+            vote_totals[i[2]] += 1
 
 
+winner = max(vote_totals, key=vote_totals.get)     
+def print_Lines():
+    print("-------------------------")
 
+
+print("Election Results")
+print_Lines()
+print(f"Total Votes: {total_votes}")
+print_Lines()
+print()
+for i in candidate_list:
+    vote_percentage = vote_totals[i]/total_votes
+    percentage = f"{vote_percentage:.3%}"
+    print(f"{i}: {percentage} ({vote_totals[i]})")
+print_Lines()
+print(f"Winner {winner}")
+print_Lines()
 
 
 
@@ -45,8 +61,9 @@ with open(voting_csv) as csvfile:
 
 
 # print(total_votes)
-print(candidate_list)
-# print(vote_totals['Charles Casper Stockham'])
+# print(vote_totals)
+# #print(candidate_list)
+# print(vote_totals)
 
 
 
